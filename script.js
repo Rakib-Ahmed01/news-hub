@@ -39,6 +39,9 @@ loadNews("01");
 const displayNews = (data) => {
   newsContainer.innerHTML = "";
   data = data.data;
+  const sortedData = data.sort(
+    (obj1, obj2) => obj2.total_view - obj1.total_view
+  );
   if (data.length !== 0) {
     const categoryId = data[0].category_id;
     newsCount.innerText = data.length;
@@ -69,7 +72,7 @@ const displayNews = (data) => {
     newsCount.innerText = 0;
     category.innerText = "Culture";
   }
-  data.forEach((news) => {
+  sortedData.forEach((news) => {
     const div = document.createElement("div");
     div.classList.add(
       "p-3",
@@ -96,13 +99,13 @@ const displayNews = (data) => {
        ${news.details}
       </p>
       <div class="flex justify-between items-center pr-6 mt-5">
-        <div id="author-details" class="flex items-center gap-2">
+        <div id="author-details" class="flex flex-col justify-center sm:flex-row items-center gap-2">
           <img
             src="${news.author.img}"
             alt=""
             class="w-10 h-10 rounded-full"
           />
-          <div>
+          <div class="text-center sm:text-left">
             <h3 id="name" class="font-semibold">${news.author.name}</h3>
             <p id="date" class="font-medium">${news.author.published_date}</p>
           </div>
@@ -142,7 +145,6 @@ const loadFullNews = async (newsId) => {
 
 const displayFullNewsOnModal = (data) => {
   data = data.data;
-  console.log(data);
   modal.innerHTML = `
   <div
   class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
