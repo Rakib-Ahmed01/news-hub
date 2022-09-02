@@ -4,7 +4,7 @@ const categories = document.getElementById("categories");
 const newsContainer = document.getElementById("news-container");
 const category = document.getElementById("category");
 const newsCount = document.getElementById("news-count");
-
+const modal = document.getElementById("modal");
 const loadCategories = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/news/categories"
@@ -39,10 +39,8 @@ loadNews("01");
 const displayNews = (data) => {
   newsContainer.innerHTML = "";
   data = data.data;
-  console.log(data);
   if (data.length !== 0) {
     const categoryId = data[0].category_id;
-    console.log(categoryId);
     newsCount.innerText = data.length;
     switch (categoryId) {
       case "01":
@@ -114,7 +112,7 @@ const displayNews = (data) => {
         </div>
         <div>
           <button id="details-btn" class="text-white bg-sky-500 px-6 py-2 rounded shadow border border-sky-500 shadow-sky-100/20" data-bs-toggle="modal"
-          data-bs-target="#exampleModalLong">
+          data-bs-target="#exampleModalLong" onclick="loadFullNews('${news._id}')">
            Read More
           </button>
         </div>
@@ -124,4 +122,39 @@ const displayNews = (data) => {
   `;
     newsContainer.appendChild(div);
   });
+};
+
+const loadFullNews = async (newsId) => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/news/${newsId}`
+  );
+  const data = await res.json();
+  displayFullNewsOnModal(data);
+};
+
+const displayFullNewsOnModal = (data) => {
+  data = data.data;
+  console.log(data);
+  modal.innerHTML = `
+  <div
+  class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md"
+>
+  <h5
+    class="text-xl font-semibold leading-normal text-gray-800"
+    id="exampleModalLongLabel"
+  >
+    ${data[0].title}
+  </h5>
+  <button
+    type="button"
+    class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  ></button>
+</div>
+<div class="modal-body relative p-4 space-y-4 mx-auto">
+  <img src="${data[0].thumbnail_url}" class="w-full h-96 bg-cover" "/>
+  <p>${data[0].details}</p>
+</div>
+  `;
 };
