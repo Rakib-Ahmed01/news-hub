@@ -37,6 +37,7 @@ const loadNews = async (id) => {
 loadNews("01");
 
 const displayNews = (data) => {
+  newsContainer.innerHTML = "";
   data = data.data;
   console.log(data);
   if (data.length !== 0) {
@@ -58,9 +59,6 @@ const displayNews = (data) => {
         break;
       case "05":
         category.innerText = "Entertainment";
-        break;
-      case "06":
-        category.innerText = "Culture";
         break;
       case "07":
         category.innerText = "Arts";
@@ -115,8 +113,9 @@ const displayNews = (data) => {
           ><i class="fa-solid fa-star-half-stroke"></i>
         </div>
         <div>
-          <button id="details-btn">
-            <i class="fa-sharp fa-solid fa-arrow-right"></i>
+          <button id="details-btn" class="text-white bg-sky-500 px-6 py-2 rounded shadow border border-sky-500 shadow-sky-100/20" data-bs-toggle="modal"
+          data-bs-target="#exampleModalLong">
+           Read More
           </button>
         </div>
       </div>
