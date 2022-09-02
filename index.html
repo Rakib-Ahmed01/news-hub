@@ -7,10 +7,10 @@
     <title>News Hub</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body>
+  <body class="bg-gray-100/40">
     <header class="container mx-auto">
       <nav
-        class="relative w-full flex flex-wrap items-center justify-between py-4 bg-gray-100 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg navbar navbar-expand-lg navbar-light"
+        class="relative w-full flex flex-wrap items-center justify-between py-6 bg-white text-gray-500 hover:text-gray-700 focus:text-gray-700 navbar navbar-expand-lg navbar-light rounded"
       >
         <div
           class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
@@ -60,14 +60,14 @@
               class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4"
               href="#"
             >
-              <h3>News</h3>
+              <h3 class="text-lg font-medium">News</h3>
             </a>
             <div class="dropdown relative">
               <a
                 class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 dropdown-toggle hidden-arrow flex items-center"
                 href="#"
               >
-                <h3>Blog</h3>
+                <h3 class="text-lg font-medium">Blog</h3>
               </a>
             </div>
             <div class="dropdown relative">
@@ -86,6 +86,59 @@
         </div>
       </nav>
     </header>
+    <main class="">
+      <section id="categories" class="container mx-auto py-7 px-2">
+        <ul class="flex justify-between flex-wrap">
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+          <li>Home</li>
+        </ul>
+      </section>
+      <section
+        id="news-count"
+        class="container mx-auto py-6 px-2 bg-white rounded"
+      >
+        <h2 class="text-xl font-medium text-center">
+          4 News Found In This Category
+        </h2>
+      </section>
+      <section
+        class="container mx-auto py-7 px-2 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-2">
+          <h2 class="text-xl font-medium">Sort By View:</h2>
+          <div class="flex justify-center">
+            <div class="w-[100px]">
+              <select
+                class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                aria-label="Default select example"
+                disabled
+              >
+                <option selected>Defualt</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <button
+            class="text-white bg-sky-500 px-6 py-2 rounded shadow border border-sky-500 shadow-sky-100/20"
+          >
+            Todays Pick
+          </button>
+          <button
+            class="bg-white text-sky-500 px-6 py-2 rounded shadow border border-sky-500 shadow-sky-100/20"
+          >
+            Trending
+          </button>
+        </div>
+      </section>
+    </main>
     <script src="node_modules/tw-elements/dist/js/index.min.js"></script>
     <script src="script.js"></script>
   </body>
