@@ -71,14 +71,22 @@ const displayNews = (data) => {
   }
   data.forEach((news) => {
     const div = document.createElement("div");
-    div.classList.add("p-3", "bg-white", "rounded-md", "flex", "gap-8", "mb-6");
+    div.classList.add(
+      "p-3",
+      "bg-white",
+      "rounded-md",
+      "md:flex",
+      "gap-8",
+      "mb-6",
+      "space-y-2"
+    );
 
     div.innerHTML = `
       <img
       id="thumbnail"
       src="${news.thumbnail_url}"
       alt=""
-      class="w-72 h-72 rounded bg-cover"
+      class="w-full h-88 md:w-72 md:h-72 rounded bg-cover"
     />
     <div id="text" class="space-y-5">
       <h1 id="title" class="text-3xl font-semibold">
