@@ -1,5 +1,4 @@
-console.log("Bismillah...");
-
+// All Variables
 const categories = document.getElementById("categories");
 const newsContainer = document.getElementById("news-container");
 const category = document.getElementById("category");
@@ -9,6 +8,7 @@ const spinner = document.getElementById("spinner");
 const noNews = document.getElementById("no-news");
 const someThingWentWrong = document.getElementById("something-went-wrong");
 
+// Load Categories
 const loadCategories = async () => {
   hide(noNews);
   display(spinner);
@@ -30,6 +30,7 @@ const loadCategories = async () => {
 
 loadCategories();
 
+// Display Categories
 const displayCategories = (data) => {
   data = data.data.news_category;
   data.forEach((category) => {
@@ -41,6 +42,7 @@ const displayCategories = (data) => {
   });
 };
 
+// Load News
 const loadNews = async (id) => {
   hide(noNews);
   try {
@@ -59,6 +61,7 @@ const loadNews = async (id) => {
 
 loadNews("08");
 
+// Display News
 const displayNews = (data, categoryId) => {
   newsContainer.innerHTML = "";
   hide(spinner);
@@ -113,15 +116,15 @@ const displayNews = (data, categoryId) => {
       div.innerHTML = `
         <img
         id="thumbnail"
-        src="${news.thumbnail_url}"
+        src="${news.image_url}"
         alt=""
-        class="w-full h-88 md:w-[30rem] md:mx-auto  lg:w-72  bg-cover"
+        class="w-full h-88  md:mx-auto  lg:w-72  bg-cover"
       />
       <div id="text" class="space-y-5">
         <h1 id="title" class="text-3xl font-semibold">
           ${news.title}
         </h1>
-        <p id="details" class="leading-7 text-base text-ellipsis overflow-hidden h-28">
+        <p id="details" class="leading-7 text-base text-ellipsis overflow-hidden line-clamp-4">
          ${news.details}
         </p>
         <div class="flex justify-between items-center pr-6 mt-5">
@@ -174,6 +177,7 @@ const displayNews = (data, categoryId) => {
   }
 };
 
+// Load Full News
 const loadFullNews = async (newsId) => {
   try {
     const res = await fetch(
@@ -187,6 +191,7 @@ const loadFullNews = async (newsId) => {
   hide(spinner);
 };
 
+// Display News On Modal
 const displayFullNewsOnModal = (data) => {
   data = data.data;
   modal.innerHTML = `
@@ -207,21 +212,59 @@ const displayFullNewsOnModal = (data) => {
   ></button>
 </div>
 <div class="modal-body relative p-4 space-y-4 mx-auto">
-  <img src="${data[0].thumbnail_url}" class="w-full h-96 bg-cover" "/>
+  <img src="${data[0].image_url}" class="w-full h-96 bg-cover" "/>
+  <div class="flex justify-between items-center pr-6 mt-5">
+  <div id="author-details" class="flex flex-col justify-center sm:flex-row items-center gap-2">
+    <img
+      src="${data[0].author.img}"
+      alt=""
+      class="w-10 h-10 rounded-full"
+    />
+    <div class="text-center sm:text-left">
+      <h3 id="name" class="font-semibold">${
+        Boolean(data[0].author.name) ? data[0].author.name : "No Data Found"
+      }</h3>
+      <p id="date" class="font-medium">${
+        Boolean(data[0].author.published_date)
+          ? data[0].author.published_date
+          : "No Data Found"
+      }</p>
+    </div>
+  </div>
+  <div id="view" class="flex flex-col sm:flex-row justify-center items-center gap-2">
+    <i class="fa-regular fa-eye text-lg"></i>
+    <h2 class="font-semibold">${
+      data[0].total_view !== null && typeof data[0].total_view === "number"
+        ? data[0].total_view
+        : "No Data Found"
+    }</h2>
+  </div>
+  <div id="ratings">
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i>
+    <i class="fa-solid fa-star"></i
+    ><i class="fa-solid fa-star-half-stroke"></i>
+  </div>
+</div>
   <p>${data[0].details}</p>
 </div>
   `;
 };
 
+// Hide Element
 function hide(element) {
   element.classList.remove("flex");
   element.classList.add("hidden");
 }
+
+// Display Element
 function display(element) {
   element.classList.remove("hidden");
   element.classList.add("flex");
 }
 
+// Redirecting Page
 function redirect() {
   window.location.href = "./blog.html";
 }
