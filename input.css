@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .category {
+    @apply text-blue-400 font-medium;
+  }
+}

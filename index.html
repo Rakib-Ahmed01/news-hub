@@ -11,7 +11,7 @@
     ></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="bg-gray-100">
+  <body class="bg-gray-100 min-h-screen">
     <header class="container mx-auto">
       <nav
         class="relative w-full flex flex-wrap items-center justify-between py-6 bg-white text-gray-500 hover:text-gray-700 focus:text-gray-700 navbar navbar-expand-lg navbar-light rounded"
@@ -64,14 +64,16 @@
               class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4"
               href="#"
             >
-              <h3 class="text-lg font-medium">News</h3>
+              <h3 class="text-lg font-medium" onclick="loadNews('08')">News</h3>
             </a>
             <div class="dropdown relative">
               <a
                 class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 dropdown-toggle hidden-arrow flex items-center"
                 href="#"
               >
-                <h3 class="text-lg font-medium">Blog</h3>
+                <h3 class="text-lg font-medium" onclick="redirect(this)">
+                  Blog
+                </h3>
               </a>
             </div>
             <div class="dropdown relative">
@@ -90,13 +92,13 @@
         </div>
       </nav>
     </header>
-    <main class="min-w-[50vh]">
+    <main class="min-h-[80vh]">
       <section class="container mx-auto py-7 px-2">
         <ul id="categories" class="flex justify-between flex-wrap gap-5"></ul>
       </section>
       <section class="container mx-auto py-6 px-2 bg-white rounded">
         <h2 class="text-xl font-medium text-center">
-          <span id="news-count">5</span> News Found For Category
+          <span id="news-count"></span> News Found For Category
           <span id="category"></span>
         </h2>
       </section>
@@ -149,7 +151,7 @@
         </div>
       </section>
       <section>
-        <div class="flex justify-center items-center my-6">
+        <div class="flex justify-center items-center mt-2">
           <div
             id="spinner"
             class="spinner-border animate-spin w-12 h-12 border-4 rounded-full hidden"
@@ -159,8 +161,30 @@
           </div>
         </div>
       </section>
+      <section class="container mx-auto">
+        <div
+          id="no-news"
+          class="px-10 py-6 rounded-lg shadow-sm bg-white flex flex-col justify-center items-center gap-2 w-[23rem] mx-auto"
+        >
+          <i class="fa-solid fa-circle-minus text-5xl"></i>
+          <h5 class="text-gray-900 text-xl leading-tight font-semibold mb-2">
+            No News Found
+          </h5>
+        </div>
+      </section>
+      <section class="container mx-auto">
+        <div
+          id="something-went-wrong"
+          class="px-10 py-6 rounded-lg shadow-sm bg-white flex-col justify-center items-center gap-2 w-[23rem] mx-auto hidden"
+        >
+          <i class="fa-solid fa-triangle-exclamation text-5xl"></i>
+          <h5 class="text-gray-900 text-xl leading-tight font-semibold mb-2">
+            Something Went Wrong
+          </h5>
+        </div>
+      </section>
     </main>
-    <footer class="container mx-auto py-6 px-2 bg-white rounded">
+    <footer class="container mx-auto py-6 px-2 bg-white rounded mt-6">
       <h2 class="text-xl font-medium text-center">All Rights Reserved</h2>
     </footer>
     <script src="node_modules/tw-elements/dist/js/index.min.js"></script>

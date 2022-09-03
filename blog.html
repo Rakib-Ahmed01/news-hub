@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Hub</title>
+    <script
+      src="https://kit.fontawesome.com/370c8f2c18.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <header class="container mx-auto">
+      <nav
+        class="relative w-full flex flex-wrap items-center justify-between py-6 bg-white text-gray-500 hover:text-gray-700 focus:text-gray-700 navbar navbar-expand-lg navbar-light rounded"
+      >
+        <div
+          class="container-fluid w-full flex flex-wrap items-center justify-between px-6"
+        >
+          <button
+            class="navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              data-icon="bars"
+              class="w-6"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </button>
+          <div
+            class="collapse navbar-collapse flex-grow items-center"
+            id="navbarSupportedContent"
+          >
+            <a
+              class="flex items-center text-gray-900 hover:text-gray-900 focus:text-gray-900 mt-2 lg:mt-0 mr-1"
+              href="#"
+            >
+              <h2 class="text-xl font-semibold">News Hub</h2>
+            </a>
+          </div>
+          <!-- Collapsible wrapper -->
+
+          <!-- Right elements -->
+          <div class="flex items-center relative">
+            <!-- Icon -->
+            <a
+              class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4"
+              href="#"
+            >
+              <h3 class="text-lg font-medium" onclick="redirect()">News</h3>
+            </a>
+            <div class="dropdown relative">
+              <a
+                class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 dropdown-toggle hidden-arrow flex items-center"
+                href="#"
+              >
+                <h3 class="text-lg font-medium">Blog</h3>
+              </a>
+            </div>
+            <div class="dropdown relative">
+              <a class="flex items-center hidden-arrow" href="#">
+                <img
+                  src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+                  class="rounded-full"
+                  style="height: 30px; width: 30px"
+                  alt=""
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
+          <!-- Right elements -->
+        </div>
+      </nav>
+    </header>
+    <main class="min-h-[80vh]">
+      <section class="container  my-6 mx-auto ">
+        <div class="bg-white space-y-4 p-4 rounded-sm mb-5">
+          <h2 class="text-2xl text-center mb-2">
+            Differnce among<code> var, <code>let</code> & <code>const</code></code>?
+          </h2
+          <p>
+            <code>var</code></code> In JavaScript, the variable declared
+            with <code>var</code>
+            keyword has function level scoping and can be reassigned. However,
+            if the variable declared outside the function then its scope is
+            global. Also, if a variable is declared but not initialized then it
+            is assigned undefined by default.
+          </p>
+          <p> <code>let</code> In JavaScript, the variable declared with <code>let</code> keyword has block level scoping and can be reassigned. Also, if a variable is declared but not initialized then it is assigned undefined by default.</p>
+          <p><code>const</code> In JavaScript, the variable declared with <code>const</code> keyword has block level scoping (its scope is the nearest enclosing block) and cannot be reassigned. The value cannot be changed once it is declared.</p>
+        </div>
+        <div class="bg-white space-y-4 p-4 rounded-sm mb-5">
+          <h2 class="text-2xl text-center mb-2">
+            Differnce between <code>normal function & arrow function</code> ?
+          </h2
+          <p>
+            An arrow function expression or syntax is a simplified as well as a more compact version of a regular or normal function expression or syntax.  and even though it’s easier to be implemented compared to normal functions still it has some limitations and cannot be utilized in all cases.
+          </p>
+          <p> A Function Declaration( or a Function Statement) defines a function with the specified parameters without requiring a variable assignment. They exist on their own, i.e, they are standalone constructs and cannot be nested within a non-function block. A function is declared using the function keyword.</p>
+          <h3 class="text-lg">Diffences:</h3>
+          <ul class=" list-decimal ml-4">
+            <li>Syntax</li>
+            <li>Use of this keyword</li>
+            <li>Availability of arguments objects</li>
+            <li>Using new keyword</li>
+          </ul>
+        </div>
+        <div class="bg-white space-y-4 p-4 rounded-sm mb-5">
+          <h2 class="text-2xl text-center mb-2">
+            Differnce among <code>forEach(), map(), filter() & find()</code>
+          </h2
+          <p>
+            The forEach() array method loops through any array, executing a provided function once for each array element in ascending index order. This function is referred to as a callback function. This method returns <code>undefined</code>.
+          </p>
+          <p> The map() method in JavaScript creates an array by calling a specific function on each element present in the parent array. It is a non-mutating method. Generally map() method is used to iterate over an array and calling function on every element of array.</p>
+          <p>
+            The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.
+          </p>
+          <p>
+            The arr.find() method in Javascript is used to get the value of the first element in the array that satisfies the provided condition. It checks all the elements of the array and whichever first element satisfies the condition is going to print. This function will not work function having the empty array elements, also does not change the original array.
+          </p>
+        </div>
+        <div class="bg-white space-y-4 p-4 rounded-sm mb-5">
+          <h2 class="text-2xl text-center mb-2">
+            Why do we use <code> template String</code> ?
+          </h2
+          <p>
+            String interpolation is a great programming language feature that allows injecting variables, function calls, arithmetic expressions directly into a string. String interpolation was absent in JavaScript before ES6. String interpolation is a new feature of ES6, that can make multi-line strings without the need for an escape character. We can use apostrophes and quotes easily that they can make our strings and therefore our code easier to read as well. These are some of the reasons to use string interpolation over string concatenation.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="container mx-auto py-6 px-2 bg-white rounded mt-6">
+      <h2 class="text-xl font-medium text-center">All Rights Reserved</h2>
+    </footer>
+    <script src="node_modules/tw-elements/dist/js/index.min.js"></script>
+    <script>
+        function redirect(){
+          window.location.href = './index.html'
+        }
+    </script>
+  </body>
+</html>
