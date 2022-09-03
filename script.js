@@ -5,6 +5,7 @@ const newsContainer = document.getElementById("news-container");
 const category = document.getElementById("category");
 const newsCount = document.getElementById("news-count");
 const modal = document.getElementById("modal");
+
 const loadCategories = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/news/categories"
@@ -73,6 +74,7 @@ const displayNews = (data) => {
     category.innerText = "Culture";
   }
   sortedData.forEach((news) => {
+    console.log(Boolean(news.author.name));
     const div = document.createElement("div");
     div.classList.add(
       "p-3",
@@ -106,13 +108,23 @@ const displayNews = (data) => {
             class="w-10 h-10 rounded-full"
           />
           <div class="text-center sm:text-left">
-            <h3 id="name" class="font-semibold">${news.author.name}</h3>
-            <p id="date" class="font-medium">${news.author.published_date}</p>
+            <h3 id="name" class="font-semibold">${
+              Boolean(news.author.name) ? news.author.name : "No Data Found"
+            }</h3>
+            <p id="date" class="font-medium">${
+              Boolean(news.author.published_date)
+                ? news.author.published_date
+                : "No Data Found"
+            }</p>
           </div>
         </div>
-        <div id="view">
+        <div id="view" class="flex justify-center items-center gap-2">
           <i class="fa-regular fa-eye text-lg"></i>
-          <h2 class="font-semibold">${news.total_view}</h2>
+          <h2 class="font-semibold">${
+            news.total_view !== null && typeof news.total_view === "number"
+              ? news.total_view
+              : "No Data Found"
+          }</h2>
         </div>
         <div id="ratings">
           <i class="fa-solid fa-star"></i>
@@ -123,7 +135,9 @@ const displayNews = (data) => {
         </div>
         <div>
           <button id="details-btn" class="text-white bg-sky-500 px-6 py-2 rounded shadow border border-sky-500 shadow-sky-100/20" data-bs-toggle="modal"
-          data-bs-target="#exampleModalLong" onclick="loadFullNews('${news._id}')">
+          data-bs-target="#exampleModalLong" onclick="loadFullNews('${
+            news._id
+          }')">
            Read More
           </button>
         </div>

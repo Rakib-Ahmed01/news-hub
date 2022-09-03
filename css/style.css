@@ -4259,12 +4259,12 @@ textarea.form-control.is-invalid {
   gap: 1.25rem;
 }
 
-.gap-2 {
-  gap: 0.5rem;
-}
-
 .gap-3 {
   gap: 0.75rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-8 {
@@ -4451,10 +4451,6 @@ textarea.form-control.is-invalid {
 
 .pr-6 {
   padding-right: 1.5rem;
-}
-
-.text-left {
-  text-align: left;
 }
 
 .text-center {
@@ -4670,10 +4666,6 @@ textarea.form-control.is-invalid {
 @media (min-width: 640px) {
   .sm\:flex-row {
     flex-direction: row;
-  }
-
-  .sm\:items-center {
-    align-items: center;
   }
 
   .sm\:justify-between {
