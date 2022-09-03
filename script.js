@@ -5,13 +5,16 @@ const newsContainer = document.getElementById("news-container");
 const category = document.getElementById("category");
 const newsCount = document.getElementById("news-count");
 const modal = document.getElementById("modal");
+const spinner = document.getElementById("spinner");
 
 const loadCategories = async () => {
+  display(spinner);
   const res = await fetch(
     "https://openapi.programming-hero.com/api/news/categories"
   );
   const data = await res.json();
   displayCategories(data);
+  hide(spinner);
 };
 
 loadCategories();
@@ -21,18 +24,20 @@ const displayCategories = (data) => {
   data.forEach((category) => {
     const li = document.createElement("li");
     li.innerHTML = `
-        <li onclick=loadNews('${category.category_id}')>${category.category_name}</li>
+        <li class="pointer" onclick=loadNews('${category.category_id}')>${category.category_name}</li>
     `;
     categories.appendChild(li);
   });
 };
 
 const loadNews = async (id) => {
+  display(spinner);
   const res = await fetch(
     `https://openapi.programming-hero.com/api/news/category/${id}`
   );
   const data = await res.json();
   displayNews(data);
+  hide(spinner);
 };
 
 loadNews("01");
@@ -80,7 +85,7 @@ const displayNews = (data) => {
       "p-3",
       "bg-white",
       "rounded-md",
-      "md:flex",
+      "lg:flex",
       "gap-8",
       "mb-6",
       "space-y-2"
@@ -91,7 +96,7 @@ const displayNews = (data) => {
       id="thumbnail"
       src="${news.thumbnail_url}"
       alt=""
-      class="w-full h-88 md:w-72 md:h-72 rounded bg-cover"
+      class="w-full h-88 md:w-[30rem] md:mx-auto  lg:w-72  bg-cover"
     />
     <div id="text" class="space-y-5">
       <h1 id="title" class="text-3xl font-semibold">
@@ -118,7 +123,7 @@ const displayNews = (data) => {
             }</p>
           </div>
         </div>
-        <div id="view" class="flex justify-center items-center gap-2">
+        <div id="view" class="flex flex-col sm:flex-row justify-center items-center gap-2">
           <i class="fa-regular fa-eye text-lg"></i>
           <h2 class="font-semibold">${
             news.total_view !== null && typeof news.total_view === "number"
@@ -150,11 +155,13 @@ const displayNews = (data) => {
 };
 
 const loadFullNews = async (newsId) => {
+  display(spinner);
   const res = await fetch(
     `https://openapi.programming-hero.com/api/news/${newsId}`
   );
   const data = await res.json();
   displayFullNewsOnModal(data);
+  hide(spinner);
 };
 
 const displayFullNewsOnModal = (data) => {
@@ -182,3 +189,12 @@ const displayFullNewsOnModal = (data) => {
 </div>
   `;
 };
+
+function hide(element) {
+  element.classList.remove("flex");
+  element.classList.add("hidden");
+}
+function display(element) {
+  element.classList.remove("hidden");
+  element.classList.add("flex");
+}
